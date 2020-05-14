@@ -1,0 +1,242 @@
+﻿@model WebCrawler.Core.Models.Websites
+@using WebCrawler.AppHelpers
+
+@{
+    var currentSession = Context.Session.GetSession();
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <i class="fas fa-fw fa-laptop-code"></i> Scrapper</h1>
+
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div>
+                        @if (!String.IsNullOrEmpty(Model.WebsiteName))
+                        {
+                            <input type="text" style="display:none" value="@Model.WebsiteName" id="website_name" />
+                            <b class="text-primary">@Model.WebsiteName</b>
+                            <i>Scrapper</i>
+
+                        }
+
+                        else
+                        {
+                            <input type="text" style="display:none" value="" id="website_name" />
+                            <b class="text-danger">No Website Selected</b>
+
+                        }
+
+                    </div>
+
+                    @if (currentSession != null && currentSession.User.UserRoleId == 1)
+                    {
+                        <div class="dropdown no-arrow">
+                            <a class="" style="text-decoration:none" href="/Configuration/Index" aria-expanded="false">
+                                <i class="fas fa-fw fa-tools"></i>Change?
+                            </a>
+                        </div>
+                    }
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+
+
+
+
+                            <div class="form-group">
+                                <button type="button" onclick="StartScrapper(this);" id="start_button" class="btn btn-info">
+                                    <i class="fas fa-fw fa-play" id="start_icon"></i>
+                                    <div class="spinner-border text-white" role="status" id="running_icon" style="display:none; height:20px; width:20px;"></div>
+                                    <div id="start_button_text" style="display:inline-block">Start Scrapper</div>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <div class="text-primary" id="status_text">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+
+                            <table class="table  table-responsive">
+
+                                <tr>
+                                    <th>Category Name</th>
+                                    <th>Action</th>
+                                    <th>Status</th>
+                                </tr>
+
+                                <tbody id="categories">
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+<script>
+
+    function StartScrapper() {
+
+        var website = $('#website_name').val();
+        if (website == '' || website == null) {
+
+            $('#status_text').html("Please Select a website to proceed to scrapping");
+            return false;
+        }
+
+
+        $('#status_text').html("Fetching Categories...");
+
+
+        $('#start_icon').hide();
+        $('#running_icon').show();
+        $('#start_button').attr("disabled", true);
+        $('#start_button_text').text("Scrapper Running...")
+
+        var request = {
+            StartScrapper: true
+        }
+
+
+
+        $.ajax({
+            url: ("/scrapper/Start"),
+            type: "POST",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(request),
+            success: function (data) {
+                console.log(data);
+
+                if (data.status == 200 && data.result.length > 0) {
+                    $('#status_text').html(data.result.length + " Categories fetched");
+
+                    var counter = 0;
+                    $.each(data.result, function (i, v) {
+                        counter = counter + 1;
+                        $('#categories').append(`<tr>
+                    <td>${v.categoryName}</td>
+                    <td><button start-id="${counter}" type="button" cat-name="${v.categoryName}" onclick="GetDataByCategory(this)" id="_button${counter}" name="buttons-cat" class="btn btn-dark">Start </buton> </td>
+
+<td>
+<div>
+<div class="spinner-border text-primary" role="status" id="running${counter}" style="height:20px; width:20px; display:none"></div>
+<a id="status${counter}" style="text-decoration:none;"target="_blank" status-id="${counter}"  class="text-priary">Not Started</a>
+</div>
+</td></tr>`)
+                    });
+
+                }
+
+
+
+
+
+                $('#start_icon').show();
+                $('#running_icon').hide();
+                $('#start_button').attr("disabled", false);
+                $('#start_button_text').text("Start Scrapper");
+
+
+
+            },
+            error: function (error) {
+                console.log("error");
+                console.log(error);
+
+
+                $('#status_text').html("An Error Occured.");
+
+                $('#start_icon').show();
+                $('#running_icon').hide;
+                $('#start_button').attr("disabled", false);
+                $('#start_button_text').text("Start Scrapper");
+            }
+
+        });
+
+
+    }
+
+    function GetDataByCategory(e) {
+
+        var categoryName = $(e).attr("cat-name");
+
+        $("button[name='buttons-cat']").attr("disabled", "disabled");
+
+        var id = $(e).attr("start-id");
+
+        $('#status' + id).text("Crawling Data...")
+        $('#running' + id).show();
+
+        $.ajax({
+            url: ("/scrapper/GetDataByCategory?categoryName=" + categoryName),
+            type: "GET",
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                if (data.status == 200) {
+                    $('#status' + id).text("Completed. View Data")
+                    $('#status' + id).attr("class", "text-success");
+                    $('#running' + id).hide();
+                    $('#status' + id).attr('href', '/Scrapper/ViewCategoriesData?categoryName=' + categoryName + '')
+                    $("button[name='buttons-cat']").attr("disabled", false);
+                }
+            }
+
+        });
+
+    }
+
+</script>

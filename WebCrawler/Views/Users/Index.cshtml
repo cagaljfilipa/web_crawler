@@ -1,0 +1,175 @@
+﻿@model List<WebCrawler.Core.Models.Users>
+@using Microsoft.AspNetCore.Http;
+@using WebCrawler.AppHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var currentUser = Context.Session.GetSession().User;
+
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <i class="fas fa-fw fa-users"></i> Users</h1>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                @if (currentUser != null && currentUser.UserRoleId == 1)
+                {
+                    <div class="input-group">
+                        @using (Html.BeginForm("Index", "Users", FormMethod.Get))
+                        {
+
+                            <input type="text" class="form-control" name="Name" placeholder="Search User by Name" value="" />
+
+
+
+                        }
+                        @using (Html.BeginForm("Index", "Users", FormMethod.Get))
+                        {
+
+                            <input type="text" class="form-control" name="Email" placeholder="Search User by Email" value="" />
+
+
+                        }
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div>
+                        Users List
+
+                    </div>
+
+                    <div class="dropdown no-arrow">
+                        <a class="" style="text-decoration:none" href="/Users/AddUpdateUser?userId=0" aria-expanded="false">
+                            <i class="fas fa-fw fa-user"></i> &nbsp; Add New User
+                        </a>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+
+
+                            <table class="table table-responsive">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>User Name</td>
+                                    <td>Email</td>
+                                    <td>Active Status</td>
+                                    <td>Verified Status</td>
+                                    <td>User Role</td>
+                                    <td>Action</td>
+                                </tr>
+
+
+                                @if (Model != null && Model.Count > 0)
+                                {
+                                    foreach (var user in Model)
+                                    {
+                                        <tr>
+                                            <td>@user.FirstName @user.LastName</td>
+                                            <td>@user.UserName</td>
+                                            <td>@user.Email</td>
+                                            <td>
+                                                @if (user.IsActive == 1)
+                                                {
+                                                    <p class="text-primary">True</p>
+                                                }
+                                                else
+                                                {
+
+                                                    <p class="text-primary"> False</p>
+                                                }
+
+                                            </td>
+
+                                            <td>
+                                                @if (user.IsVerified == 2)
+                                                {
+                                                    <p class="text-primary">Verified</p>
+                                                }
+                                                else
+                                                {
+
+                                                    <p class="text-danger"> Not Verified</p>
+                                                }
+
+                                            </td>
+
+
+                                            <td>
+                                                @if (user.UserRoleId == 1)
+                                                {
+                                                    <p class="text-primary">Admin</p>
+                                                }
+                                                else
+                                                {
+
+                                                    <p class="text-warning"> Normal User</p>
+                                                }
+
+                                            </td>
+
+                                            <td>
+
+                                                <a href="/Users/AddUpdateUser?userId=@user.UserId" class="btn btn-primary"> Update</a>
+
+                                                <a href="/Users/DeleteUser?userId=@user.UserId" class="btn btn-danger"> Delete</a>
+
+
+
+                                            </td>
+
+                                        </tr>
+                                    }
+                                }
+
+
+
+                            </table>
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+

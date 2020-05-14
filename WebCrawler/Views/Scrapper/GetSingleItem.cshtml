@@ -1,0 +1,151 @@
+﻿@model WebCrawler.Models.SingleItemResponse
+@{
+    ViewData["Title"] = "ViewData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <i class="fas fa-fw fa-laptop-code"></i> Scrapper</h1>
+
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    @if (Model.Item != null)
+                    {
+                    <div>
+                        @if (!String.IsNullOrEmpty(Model.Item.ItemName))
+                        {
+                            <a href="/Scrapper/AddUpdateItem?itemId=@Model.Item.ItemId" target="_blank" class="btn btn-primary">Edit</a>
+
+                            <br />
+                            <br />
+                            <a href="/Scrapper/DeleteItem?itemId=@Model.Item.ItemId" target="_blank" class="btn btn-danger">Delete</a>
+                        }
+
+                        else
+                        {<a href="/Scrapper/AddUpdateItem?itemId=0" target="_blank" class="btn btn-primary">Add</a>
+
+
+                        }
+
+                    </div>
+
+                        <div class="dropdown no-arrow" style="display:inline-block">
+                            @using (Html.BeginForm("GetSingleItem", "Scrapper", FormMethod.Get))
+                            {
+
+                                <div class="form-group" style="display:inline-block">
+
+                                    <input type="text" value="@(Model.Item.ItemCode)" class="form-control" name="ItemCode" placeholder="Search By Item Code" />
+
+                                </div>
+
+
+
+                            }
+
+
+                            @using (Html.BeginForm("GetSingleItem", "Scrapper", FormMethod.Get))
+                            {
+
+                                <div class="form-group" style="display:inline-block">
+
+                                    <input type="text" value="@(Model.Item.ItemName)" class="form-control" name="ItemName" placeholder="Search By Item Name" />
+
+                                </div>
+
+
+
+                            }
+
+
+
+                        </div>
+                      
+
+
+
+                    }
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            @if (Model.Item != null)
+                            {
+                                <div>
+                                    <h6><b> Name:</b></h6>
+                                    <p>@Model.Item.ItemName</p>
+                                </div>
+
+
+                                <div>
+                                    <h6><b> Code:</b></h6>
+                                    <p>@Model.Item.ItemCode</p>
+                                </div>
+
+
+                                <div>
+                                    <h6><b>Color:</b></h6>
+                                    <p>@Model.Item.ItemColor</p>
+                                </div>
+
+
+                                <div>
+                                    <h6><b>Description:</b></h6>
+                                    <p>@Model.Item.ItemDesc</p>
+                                </div>
+
+                            }
+
+
+
+
+
+
+                        </div>
+                        <div class="col-lg-6">
+
+                            @if (Model.Item != null)
+                            {
+                                @if (!String.IsNullOrEmpty(Model.Item.ItemImage))
+                                {
+                                    <img src="@Model.Item.ItemImage" style="width:250px; height:150px" />
+
+                                }
+                            }
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+

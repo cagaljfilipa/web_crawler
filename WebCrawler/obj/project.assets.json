@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "WebCrawler.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WebCrawler.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebCrawler.Core.dll": {}
+        }
+      },
+      "WebCrawler.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "WebCrawler.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebCrawler.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebCrawler.Repository.dll": {}
+        }
+      },
+      "WebCrawler.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "WebCrawler.Core": "1.0.0",
+          "WebCrawler.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebCrawler.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebCrawler.Service.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WebCrawler.Core/1.0.0": {
+      "type": "project",
+      "path": "../WebCrawler.Core/WebCrawler.Core.csproj",
+      "msbuildProject": "../WebCrawler.Core/WebCrawler.Core.csproj"
+    },
+    "WebCrawler.Repository/1.0.0": {
+      "type": "project",
+      "path": "../WebCrawler.Repository/WebCrawler.Repository.csproj",
+      "msbuildProject": "../WebCrawler.Repository/WebCrawler.Repository.csproj"
+    },
+    "WebCrawler.Service/1.0.0": {
+      "type": "project",
+      "path": "../WebCrawler.Service/WebCrawler.Service.csproj",
+      "msbuildProject": "../WebCrawler.Service/WebCrawler.Service.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "WebCrawler.Core >= 1.0.0",
+      "WebCrawler.Repository >= 1.0.0",
+      "WebCrawler.Service >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Filipa\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\WebCrawler.csproj",
+      "projectName": "WebCrawler",
+      "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\WebCrawler.csproj",
+      "packagesPath": "C:\\Users\\Filipa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Filipa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj": {
+              "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj"
+            },
+            "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj": {
+              "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj"
+            },
+            "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj": {
+              "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461"
+        ],
+        "assetTargetFallback": true,
+        "warn": true
+      }
+    }
+  }
+}

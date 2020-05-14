@@ -1,0 +1,144 @@
+﻿@model WebCrawler.Core.Models.Items
+@{
+    ViewData["Title"] = "AddUpdateItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    var categories = ViewData["Categories"] as List<WebCrawler.Core.Models.Categories>;
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <i class="fas fa-fw fa-laptop-code"></i> Scrapper</h1>
+
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    @if (Model != null)
+                    {
+                        <div>
+                            @if (String.IsNullOrEmpty(Model.ItemName))
+                            {
+                                <b class="text-primary">@Model.ItemName</b>
+                            }
+
+                        </div>
+
+                      
+
+
+
+                    }
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+
+
+                    @using (Html.BeginForm("AddUpdateItem", "Scrapper", FormMethod.Post))
+                    {
+                        <div class="row">
+
+                            <div class="col-lg-6">
+
+
+                                <input type="text" name="ItemId" class="form-control" value="@(Model!=null?Model.ItemId:0)" style="display:none" />
+                                <div>
+                                    <h6><b> Name:</b></h6>
+                                    <input type="text" name="ItemName" class="form-control" value="@(Model!=null?Model.ItemName:"")" />
+
+                                </div>
+
+
+                                <div>
+                                    <h6><b> Code:</b></h6>
+                                    <input type="text" name="ItemCode" class="form-control" value="@(Model!=null?Model.ItemCode:"")" />
+                                </div>
+
+
+                                <div>
+                                    <h6><b>Color:</b></h6>
+                                    <input type="text" name="ItemColor" class="form-control" value="@(Model!=null?Model.ItemColor:"")" />
+                                </div>
+
+
+
+                                <div>
+                                    <h6><b>Category</b></h6>
+                                    <select class="form-control" name="CategoryId">
+                                        @if (categories != null && categories.Count > 0)
+                                        {
+                                            foreach (var cat in categories)
+                                            {
+                                                <option value="@cat.CategoryId">@cat.CategoryName</option>
+
+                                            }
+                                        }
+
+                                    </select>
+                                   
+                                </div>
+
+
+                                <div>
+                                    <h6><b>Description:</b></h6>
+                                    <textarea class="form-control" name="ItemDesc">@(Model!=null?Model.ItemDesc:"")</textarea>
+                                </div>
+
+
+
+
+
+
+
+
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                @if (Model != null)
+                                {
+                                    @if (!String.IsNullOrEmpty(Model.ItemImage))
+                                    {
+                                        <img src="@Model.ItemImage" style="width:250px; height:150px" />
+
+                                    }
+                                }
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <br />
+                                <button type="submit" style="width:100%" class="btn btn-info">Save</button>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+

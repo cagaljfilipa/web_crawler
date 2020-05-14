@@ -1,0 +1,205 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\WebCrawler.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj",
+        "projectName": "WebCrawler.Core",
+        "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj",
+        "packagesPath": "C:\\Users\\Filipa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Filipa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj",
+        "projectName": "WebCrawler.Repository",
+        "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj",
+        "packagesPath": "C:\\Users\\Filipa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Filipa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj": {
+                "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj",
+        "projectName": "WebCrawler.Service",
+        "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj",
+        "packagesPath": "C:\\Users\\Filipa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Filipa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj": {
+                "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj"
+              },
+              "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj": {
+                "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\WebCrawler.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\WebCrawler.csproj",
+        "projectName": "WebCrawler",
+        "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\WebCrawler.csproj",
+        "packagesPath": "C:\\Users\\Filipa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Filipa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj": {
+                "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Core\\WebCrawler.Core.csproj"
+              },
+              "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj": {
+                "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Repository\\WebCrawler.Repository.csproj"
+              },
+              "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj": {
+                "projectPath": "C:\\Users\\Filipa\\Desktop\\WebCrawler\\WebCrawler.Service\\WebCrawler.Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
